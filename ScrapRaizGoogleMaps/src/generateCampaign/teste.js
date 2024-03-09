@@ -18,8 +18,8 @@ let result = [
 
 export default function sendCampaignData(result, query) {
     let nameCampaign = query;
-    let whatsappId = "69f663a7-aae7-4ef0-b755-55ad6c60f858";
-    let queueId = "526cfef4-44c9-4ab5-9af4-041b713aa977"
+    let whatsappId = "69f663a7-aae7-4ef0-b755-55ad6c60f858"; // id da conexão
+    let queueId = "526cfef4-44c9-4ab5-9af4-041b713aa977"; // id da fila
     let messages = [];
 
 
@@ -28,17 +28,17 @@ export default function sendCampaignData(result, query) {
         messages.push({
             "number": result[i].phone,
             "name": result[i].storeName,
-            "body": "Teste Campanha Scrap"
+            "body": "Teste Campanha Scrap" // mensagem que será enviada aos clientes
         });
     }
     
+    // Estruturando objeto pra passar na API
     let campaignData = {
         "name": nameCampaign,
         "whatsappId": whatsappId,
         "queueId": queueId,
         "messages": messages
     }
-
     
     // Tornar name: em "name": e assim por diante
     let jsonString = JSON.stringify(campaignData).replace(/'/g, '"');
@@ -48,8 +48,8 @@ export default function sendCampaignData(result, query) {
 
 
 // Fazer o post para a APÌ contendo os dados
-function generateCampaign(campaignData) {
-    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkOmNhbXBhaWducyIsIm1hbmFnZTpjYW1wYWlnbnMiLCJjcmVhdGU6bWVzc2FnZXMiLCJjcmVhdGU6bWVkaWFzIiwicmVhZDp3aGF0c2FwcHMiLCJ1cGRhdGU6d2hhdHNhcHBzIiwicmVhZDpxdWV1ZXMiLCJyZWFkOnVzZXJzIl0sImNvbXBhbnlJZCI6ImZmNDUzYmU5LTkyYzctNGVlZS1iNjE1LThmMTg5MDEzMTg0YSIsImlhdCI6MTcwNjE4MTM2Nn0.HrCeYP2zKSGMaePB2JX0va_ml1RjWIf-gKP6YU2I4M0"
+function generateCampaign(jsonString) {
+    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkOmNhbXBhaWducyIsIm1hbmFnZTpjYW1wYWlnbnMiLCJjcmVhdGU6bWVzc2FnZXMiLCJjcmVhdGU6bWVkaWFzIiwicmVhZDp3aGF0c2FwcHMiLCJ1cGRhdGU6d2hhdHNhcHBzIiwicmVhZDpxdWV1ZXMiLCJyZWFkOnVzZXJzIl0sImNvbXBhbnlJZCI6ImZmNDUzYmU5LTkyYzctNGVlZS1iNjE1LThmMTg5MDEzMTg0YSIsImlhdCI6MTcwNjE4MTM2Nn0.HrCeYP2zKSGMaePB2JX0va_ml1RjWIf-gKP6YU2I4M0" // Token do portal
 
 
     fetch("https://api.beta.naty.app/api/v2/campaigns", {
@@ -58,7 +58,7 @@ function generateCampaign(campaignData) {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + authToken // Token do portal da Naty
         },
-        body: campaignData
+        body: jsonString
     })
     .then(response => {
         if (!response.ok) {
@@ -79,8 +79,8 @@ function generateCampaign(campaignData) {
 
 
 function suspendCampaign(campaignId, authToken) {
-    console.log(campaignId)
-    fetch(`https://api.beta.naty.app/api/v2/campaigns/${campaignId}suspend`, {
+    console.log("campaignId: " + campaignId)
+    fetch(`https://api.beta.naty.app/api/v2/campaigns/${campaignId}/suspend`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -104,4 +104,4 @@ function suspendCampaign(campaignId, authToken) {
 }
 
 
-sendCampaignData(result, "Monitoramento");
+sendCampaignData(result, '"Monitoramento" Cascavel - PR');
