@@ -16,6 +16,7 @@ const timestampFormatado = date.toLocaleString('pt-BR', {
 // Função para preencher a planilha
 let contador = 1;
 export function preencherPlanilha(worksheet, dados) {
+
   if (!dados.category) {
     console.error('Erro: Categoria não fornecida nos dados.');
     return;
@@ -78,27 +79,27 @@ export function criarPlanilha(data) {
     const worksheet = workbook.addWorksheet(worksheetName);
 
     if (!worksheet || typeof worksheet.addRow !== 'function') {
-      console.error('Erro: worksheet não foi criado corretamente ou não possui o método addRow.');
+      // console.error('Erro: worksheet não foi criado corretamente ou não possui o método addRow.');
       return null;
     }
 
     // console.log('Planilha criada com sucesso.');
     return { workbook, worksheet };  // Retorne ambos, workbook e worksheet
   } catch (error) {
-    console.error('Erro ao criar a planilha:', error);
+    // console.error('Erro ao criar a planilha:', error);
     return null;
   }
 }
 
 // Função para salvar o arquivo
 export async function salvarArquivo(workbook, query) {
-  const __filename = path.normalize('C:\\Users\\ComercialNaty\\Documents\\CS0\\GerarScrapECampanha\\ScrapRaizGoogleMaps\\arquivos');;
+  const __filename = path.normalize('C:/Users/GIUSEPPE/Documents/CS0/projetoScrapCampanha/GerarScrapECampanhaPcGiuseppe/ScrapRaizGoogleMaps/arquivos');;
   if (!fs.existsSync(__filename)) {
     fs.mkdirSync(__filename, { recursive: true });
     // console.log("O diretório foi criado.");
   }
   const __dirname = path.dirname(__filename);
-  console.log('Diretório:', __dirname);
+  // console.log('Diretório:', __dirname);
 
   let termo = '';
   let cidadeEscolhida = '';
@@ -112,15 +113,15 @@ export async function salvarArquivo(workbook, query) {
         cidadeEscolhida = localizacao[0].trim(); // A cidade é a primeira parte da localização (índice 0)
         estadoEscolhido = localizacao[1].trim(); // O estado é a segunda parte da localização (índice 1)
       } else {
-        console.error('query não contém uma cidade e um estado');
+        // console.error('query não contém uma cidade e um estado');
         return;
       }
     } else {
-      console.error('query não está formatada corretamente');
+      // console.error('query não está formatada corretamente');
       return;
     }
   } else {
-    console.error('query está indefinida');
+    // console.error('query está indefinida');
     return;
   }
 
@@ -172,6 +173,6 @@ export async function excel(results, query) {
 
     await salvarArquivo(workbook, query);  // Passe o workbook para salvarArquivo
   } catch (error) {
-    console.error('Erro durante a execução:', error);
+    // console.error('Erro durante a execução:', error);
   }
 }

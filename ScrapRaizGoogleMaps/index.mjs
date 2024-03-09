@@ -3,7 +3,7 @@ import { exec } from 'child_process';
 import { runSearch } from './src/scrap/searchGoogleMapsLink.mjs';
 
 
-const rawdata = fs.readFileSync('c:/Users/ComercialNaty/Documents/CS0/gerarScrapECampanha/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
+const rawdata = fs.readFileSync('C:/Users/GIUSEPPE/Documents/CS0/projetoScrapCampanha/GerarScrapECampanhaPcGiuseppe/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
 const populacao = JSON.parse(rawdata);
 
 let cidadesEmbaralhadas;
@@ -129,4 +129,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "SC", 100000);
+index("Monitoramento", "PB", 100000);

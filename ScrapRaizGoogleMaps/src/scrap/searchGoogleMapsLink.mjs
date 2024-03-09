@@ -2,7 +2,7 @@ import * as cheerio from "cheerio";
 import puppeteerExtra from "puppeteer-extra";
 import stealthPlugin from "puppeteer-extra-plugin-stealth";
 import { excel } from '../GeneratePlanilha/excel.mjs';
-import generateCampaign  from "../generateCampaign/generateCampaign.js";
+import generateCampaign  from "../generateCampaign/teste.js";
 
 
 // import { searchGoogleMapsPage } from "../scrap/searchGoogleMapsPage.mjs";
@@ -221,7 +221,6 @@ async function searchGoogleMapsLinks(query) {
         return null;
     }
 }
-const query = `'Monitoramento' Cascavel - PR`;
 
 //searchGoogleMapsLinks(query);
 export async function runSearch(query) {
@@ -229,9 +228,9 @@ export async function runSearch(query) {
         const results = await searchGoogleMapsLinks(query);
 
         if (results) {
-            //console.log(results);
             excel(results, query);
             generateCampaign(results, query)
+
             // Limpar o cache somente se a busca for bem-sucedida
             //limparCacheNpm();
         } else {
@@ -242,5 +241,6 @@ export async function runSearch(query) {
     }
 }
 // Chame a função runSearch passando a query desejada para testes descomentar as duas linha abaixo e executar o arquivo
-runSearch(query);
+// const query = `'Monitoramento' Cascavel - PR`;
+// runSearch(query);
 
