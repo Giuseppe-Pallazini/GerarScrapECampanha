@@ -5,38 +5,12 @@ let result = [
         "category": "Empresa de segurança",
         "address": "R. Pedro Ivo, 619",
         "storeName": "INVIOLÁVEL CASCAVEL - MONITORAMENTO DE ALARMES",
-        "phone": "554599918407",
+        "phone": "5511988749207",
         "bizWebsite": "http://www.inviolavel.com/",
         "ratingText": "4,4 estrelas 16 comentários",
         "stars": 4.4,
         "numberOfReviews": 16,
         "googleUrl": "https://www.google.com/maps/place/Inviol%C3%A1vel+Cascavel+-+Monitoramento+de+Alarmes/data=!4m7!3m6!1s0x94f3d47188464923:0xef510adac891fba9!8m2!3d-24.9540181!4d-53.4402885!16s%2Fg%2F1tj1t7jy!19sChIJI0lGiHHU85QRqfuRyNoKUe8?authuser=0&hl=pt-BR&rclk=1"
-    },
-    {
-        "placeId": "ChIJcQezdALX85QR4xPPk9qX55I",
-        "status": "Aberto",
-        "category": "Empresa de segurança",
-        "address": "Av. Antônio Kucinski, 231B",
-        "storeName": "EF. MONITORAMENTO",
-        "phone": "556692501020",
-        "bizWebsite": "https://efmonitoramento.negocio.site/",
-        "ratingText": "5,0 estrelas 6 comentários",
-        "stars": 5,
-        "numberOfReviews": 6,
-        "googleUrl": "https://www.google.com/maps/place/EF.+monitoramento/data=!4m7!3m6!1s0x94f3d70274b30771:0x92e797da93cf13e3!8m2!3d-24.9344997!4d-53.490551!16s%2Fg%2F11fk7prkb1!19sChIJcQezdALX85QR4xPPk9qX55I?authuser=0&hl=pt-BR&rclk=1"
-    },
-    {
-        "placeId": "ChIJtRhEn3rU85QRIC9_s33O98U",
-        "status": "Aberto",
-        "category": "Fornecedor de sistema de segurança",
-        "address": "R. Paraná, 1241",
-        "storeName": "ALARMES ATLANTA",
-        "phone": "5511988749207",
-        "bizWebsite": "http://www.amarelasinternet.com/atlantasistemaeletronicodeseguranca",
-        "ratingText": "4,6 estrelas 52 comentários",
-        "stars": 4.6,
-        "numberOfReviews": 52,
-        "googleUrl": "https://www.google.com/maps/place/Alarmes+Atlanta/data=!4m7!3m6!1s0x94f3d47a9f4418b5:0xc5f7ce7db37f2f20!8m2!3d-24.9479075!4d-53.4437378!16s%2Fg%2F1t_h_45l!19sChIJtRhEn3rU85QRIC9_s33O98U?authuser=0&hl=pt-BR&rclk=1"
     }
 ];
 
@@ -77,7 +51,8 @@ export default function sendCampaignData(result, query) {
 function generateCampaign(campaignData) {
     let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkOmNhbXBhaWducyIsIm1hbmFnZTpjYW1wYWlnbnMiLCJjcmVhdGU6bWVzc2FnZXMiLCJjcmVhdGU6bWVkaWFzIiwicmVhZDp3aGF0c2FwcHMiLCJ1cGRhdGU6d2hhdHNhcHBzIiwicmVhZDpxdWV1ZXMiLCJyZWFkOnVzZXJzIl0sImNvbXBhbnlJZCI6ImZmNDUzYmU5LTkyYzctNGVlZS1iNjE1LThmMTg5MDEzMTg0YSIsImlhdCI6MTcwNjE4MTM2Nn0.HrCeYP2zKSGMaePB2JX0va_ml1RjWIf-gKP6YU2I4M0"
 
-    fetch("https://api.beta.naty.app/api/v2", {
+
+    fetch("https://api.beta.naty.app/api/v2/campaigns", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -86,14 +61,16 @@ function generateCampaign(campaignData) {
         body: campaignData
     })
     .then(response => {
-        return console.log(response.json)
-        // if (!response.ok) {
-        //     throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(response));
-        // }
+        if (!response.ok) {
+            response.json().then(errorData => {
+                throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(errorData));
+            });
+        }
         return response.json();
     })
     .then(data => {
-        console.log("Dados da campanha enviados com sucesso:", data);
+        let campaignId = data.data.campaignId;
+        suspendCampaign(campaignId, authToken) // A campanha ja começa iniciada, aqui irá pausa-la
     })
     .catch(error => {
         console.error("Erro:", error);
@@ -101,4 +78,30 @@ function generateCampaign(campaignData) {
 }
 
 
-sendCampaignData(result, "Monitoramento")
+function suspendCampaign(campaignId, authToken) {
+    console.log(campaignId)
+    fetch(`https://api.beta.naty.app/api/v2/campaigns/${campaignId}suspend`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + authToken // Token do portal da Naty
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            response.json().then(errorData => {
+                throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(errorData));
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.error("Erro:", error);
+    });
+}
+
+
+sendCampaignData(result, "Monitoramento");
