@@ -3,7 +3,7 @@ import { exec } from 'child_process';
 import { runSearch } from './src/scrap/searchGoogleMapsLink.mjs';
 
 
-const rawdata = fs.readFileSync('C:/Users/ComercialNaty/Documents/CS0/gerarScrapECampanha/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
+const rawdata = fs.readFileSync('///Users/joaovitorvogelvieira/Documents/GitHub/scrapNaty/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
 const populacao = JSON.parse(rawdata);
 
 let cidadesEmbaralhadas;
