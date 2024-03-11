@@ -100,7 +100,7 @@ async function executeSearchWithRandomDelay(query) {
       }
 
       limparCacheNpm();
-      await runSearch(query, cidadeSorteada);
+      await runSearch(query);
       return;
     } catch (error) {
       // console.error(`Erro na tentativa ${tentativas + 1}: ${error.message}`);
@@ -129,4 +129,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "PB", 100000);
+index("Monitoramento", "ES", 100000);

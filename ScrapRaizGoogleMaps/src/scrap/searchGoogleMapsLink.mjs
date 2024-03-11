@@ -231,6 +231,7 @@ export async function runSearch(query) {
             excel(results, query);
             sendCampaignData(results, query)
 
+
             // Limpar o cache somente se a busca for bem-sucedida
             //limparCacheNpm();
         } else {

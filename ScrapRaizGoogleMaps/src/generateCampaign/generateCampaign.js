@@ -1,38 +1,89 @@
-let result = [
-    {
-        "placeId": "ChIJI0lGiHHU85QRqfuRyNoKUe8",
-        "status": "Aberto",
-        "category": "Empresa de segurança",
-        "address": "R. Pedro Ivo, 619",
-        "storeName": "INVIOLÁVEL CASCAVEL - MONITORAMENTO DE ALARMES",
-        "phone": "5511988749207",
-        "bizWebsite": "http://www.inviolavel.com/",
-        "ratingText": "4,4 estrelas 16 comentários",
-        "stars": 4.4,
-        "numberOfReviews": 16,
-        "googleUrl": "https://www.google.com/maps/place/Inviol%C3%A1vel+Cascavel+-+Monitoramento+de+Alarmes/data=!4m7!3m6!1s0x94f3d47188464923:0xef510adac891fba9!8m2!3d-24.9540181!4d-53.4402885!16s%2Fg%2F1tj1t7jy!19sChIJI0lGiHHU85QRqfuRyNoKUe8?authuser=0&hl=pt-BR&rclk=1"
-    }
-];
+import { formataNumero } from "./ValidateTelefone.mjs";
 
-sendCampaignData(result, "Monitoramento")
+// let result = [
+//     {
+//       placeId: 'ChIJ0bE6zolP4ZQRDi4-re7MruY',
+//       status: 'Aberto',
+//       category: 'Fornecedor de sistema de segurança',
+//       address: 'Coronel Alberto shimitt Edificio laura 10, sala o1',
+//       storeName: 'AG MONITORAMENTO',
+//       phone: '5511988749207',
+//       bizWebsite: null,
+//       ratingText: '4,0 estrelas 2 comentários',
+//       stars: 4,
+//       numberOfReviews: 2,
+//       googleUrl: 'https://www.google.com/maps/place/AG+Monitoramento/data=!4m7!3m6!1s0x94e14f89ce3ab1d1:0xe6aecceead3e2e0e!8m2!3d-27.0048589!4d-51.153262!16s%2Fg%2F11gzn52hvy!19sChIJ0bE6zolP4ZQRDi4-re7MruY?authuser=0&hl=pt-BR&rclk=1'
+//     },
+//     {
+//       placeId: 'ChIJ0bE6zolP4ZQRDi4-re7MruY',
+//       status: 'Aberto',
+//       category: 'Fornecedor de sistema de segurança',
+//       address: 'Coronel Alberto shimitt Edificio laura 10, sala o1',
+//       storeName: 'AG MONITORAMENTO',
+//       phone: '5511988749207',
+//       bizWebsite: null,
+//       ratingText: '4,0 estrelas 2 comentários',
+//       stars: 4,
+//       numberOfReviews: 2,
+//       googleUrl: 'https://www.google.com/maps/place/AG+Monitoramento/data=!4m7!3m6!1s0x94e14f89ce3ab1d1:0xe6aecceead3e2e0e!8m2!3d-27.0048589!4d-51.153262!16s%2Fg%2F11gzn52hvy!19sChIJ0bE6zolP4ZQRDi4-re7MruY?authuser=0&hl=pt-BR&rclk=1'
+//     },
+//     {
+//       placeId: 'ChIJ0bE6zolP4ZQRDi4-re7MruY',
+//       status: 'Aberto',
+//       category: 'Fornecedor de sistema de segurança',
+//       address: 'Coronel Alberto shimitt Edificio laura 10, sala o1',
+//       storeName: 'AG MONITORAMENTO',
+//       phone: '5511988749207',
+//       bizWebsite: "https://www.camarapinheiropreto.com",
+//       ratingText: '4,0 estrelas 2 comentários',
+//       stars: 4,
+//       numberOfReviews: 2,
+//       googleUrl: 'https://www.google.com/maps/place/AG+Monitoramento/data=!4m7!3m6!1s0x94e14f89ce3ab1d1:0xe6aecceead3e2e0e!8m2!3d-27.0048589!4d-51.153262!16s%2Fg%2F11gzn52hvy!19sChIJ0bE6zolP4ZQRDi4-re7MruY?authuser=0&hl=pt-BR&rclk=1'
+//     },
+//     {
+//       placeId: 'ChIJAUQyF_1Q4ZQR3AG5TbkjRbM',
+//       status: 'Aberto',
+//       category: 'Assembléia',
+//       address: 'Av. Mal. Costa e Silva, 111',
+//       storeName: 'CÂMARA DE VEREADORES DE PINHEIRO PRETO',
+//       phone: null,
+//       bizWebsite: 'https://www.camarapinheiropreto.com',
+//       ratingText: null,
+//       stars: null,
+//       numberOfReviews: null,
+//       googleUrl: 'https://www.google.com/maps/place/C%C3%A2mara+de+Vereadores+de+Pinheiro+Preto/data=!4m7!3m6!1s0x94e150fd17324401:0xb34523b94db901dc!8m2!3d-27.0446726!4d-51.2301496!16s%2Fg%2F11h94p9y8m!19sChIJAUQyF_1Q4ZQR3AG5TbkjRbM?authuser=0&hl=pt-BR&rclk=1'
+//     }
+//   ]
 
-export default function sendCampaignData(result, query) {
-    let nameCampaign = query;
-    let whatsappId = "69f663a7-aae7-4ef0-b755-55ad6c60f858"; // id da conexão
-    let queueId = "526cfef4-44c9-4ab5-9af4-041b713aa977"; // id da fila
+//sendCampaignData(result, "'Monitoramento' São Domingos do Norte - ES")
+ 
+export default async function sendCampaignData(result, query) {
+    let nameCampaign = query.replace(/'/g, "");
+    let whatsappId = "4ca207b4-3ad7-44ab-9d39-e5ef79713ffe"; // id da conexão
+    let queueId = "dc45f8f5-ef57-45ba-881e-0c14dffd72f8"; // id da fila
     let messages = [];
-
 
     // Adicionando as mensagens
     for (let i = 0; i < result.length; i++) {
-        treatName(result[i].storeName)
-        messages.push({
-            "number": result[i].phone,
-            "name": result[i].storeName,
-            "body": "Teste Campanha Scrap" // mensagem que será enviada aos clientes
-        });
+        if (!(result[i].bizWebsite)) {
+            continue
+        }
+        if (result[i].bizWebsite.includes(".com")) { // Só entrará na campanha caso tenha site
+
+            if (!(result[i].phone)) { // se o número vier nulo
+                continue
+            }
+
+            let name = await treatName(result[i].storeName);
+            let number = await formataNumero(result[i].phone);
+            messages.push({
+                "name": name,
+                "number": number,
+                "body": "Bom dia, tudo joia? Aqui é o Willian encontrei a {{contactName}} pelo google. Gostaria de saber se a empresa de vocês é de monitoramento ou comercializa sistemas de segurança" // mensagem que será enviada aos clientes
+            });
+        }
     }
-    
+
     // Estruturando objeto pra passar na API
     let campaignData = {
         "name": nameCampaign,
@@ -40,53 +91,55 @@ export default function sendCampaignData(result, query) {
         "queueId": queueId,
         "messages": messages
     }
-    
+
     // Tornar name: em "name": e assim por diante
     let jsonString = JSON.stringify(campaignData).replace(/'/g, '"');
-    // console.log(jsonString)
-    // generateCampaign(jsonString);
+    generateCampaign(jsonString);
+    messages = [];
 }
 
 // Tratativa para o nome que vem em maiúsculo
-function treatName(name) {
-    let quantityWords = name.split(/\s+/)
-    console.log(quantityWords.length)
+async function treatName(name) {
+    return name.toLowerCase()
 }
 
 
 // Fazer o post para a APÌ contendo os dados
-// function generateCampaign(jsonString) {
-//     let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkOmNhbXBhaWducyIsIm1hbmFnZTpjYW1wYWlnbnMiLCJjcmVhdGU6bWVzc2FnZXMiLCJjcmVhdGU6bWVkaWFzIiwicmVhZDp3aGF0c2FwcHMiLCJ1cGRhdGU6d2hhdHNhcHBzIiwicmVhZDpxdWV1ZXMiLCJyZWFkOnVzZXJzIl0sImNvbXBhbnlJZCI6ImZmNDUzYmU5LTkyYzctNGVlZS1iNjE1LThmMTg5MDEzMTg0YSIsImlhdCI6MTcwNjE4MTM2Nn0.HrCeYP2zKSGMaePB2JX0va_ml1RjWIf-gKP6YU2I4M0" // Token do portal
+function generateCampaign(jsonString) {
+
+    console.log(jsonString)
+
+    let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkOmNhbXBhaWducyIsIm1hbmFnZTpjYW1wYWlnbnMiLCJjcmVhdGU6bWVzc2FnZXMiLCJjcmVhdGU6bWVkaWFzIiwicmVhZDp3aGF0c2FwcHMiLCJ1cGRhdGU6d2hhdHNhcHBzIiwicmVhZDpxdWV1ZXMiLCJyZWFkOnVzZXJzIl0sImNvbXBhbnlJZCI6ImZmNDUzYmU5LTkyYzctNGVlZS1iNjE1LThmMTg5MDEzMTg0YSIsImlhdCI6MTcwNjE4MTM2Nn0.HrCeYP2zKSGMaePB2JX0va_ml1RjWIf-gKP6YU2I4M0" // Token do portal
 
 
-//     fetch("https://api.beta.naty.app/api/v2/campaigns", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": "Bearer " + authToken // Token do portal da Naty
-//         },
-//         body: jsonString
-//     })
-//     .then(response => {
-//         if (!response.ok) {
-//             response.json().then(errorData => {
-//                 throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(errorData));
-//             });
-//         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         let campaignId = data.data.campaignId;
-//         suspendCampaign(campaignId, authToken) // A campanha ja começa iniciada, aqui irá pausa-la
-//     })
-//     .catch(error => {
-//         console.error("Erro:", error);
-//     });
-// }
+    fetch("https://api.beta.naty.app/api/v2/campaigns", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + authToken // Token do portal da Naty
+        },
+        body: jsonString
+    })
+        .then(response => {
+            // console.log("response: " + JSON.stringify(response))
+            if (!response.ok) {
+                response.json().then(errorData => {
+                    throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(errorData));
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            let campaignId = data.data.campaignId;
+            suspendCampaign(campaignId, authToken) // A campanha ja começa iniciada, aqui irá pausa-la
+        })
+        .catch(error => {
+            console.error("Erro:", error);
+        });
+}
 
 
 function suspendCampaign(campaignId, authToken) {
-    console.log("campaignId: " + campaignId)
     fetch(`https://api.beta.naty.app/api/v2/campaigns/${campaignId}/suspend`, {
         method: "PATCH",
         headers: {
@@ -94,18 +147,18 @@ function suspendCampaign(campaignId, authToken) {
             "Authorization": "Bearer " + authToken // Token do portal da Naty
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            response.json().then(errorData => {
-                throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(errorData));
-            });
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data)
-    })
-    .catch(error => {
-        console.error("Erro:", error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                response.json().then(errorData => {
+                    throw new Error("Erro ao enviar dados da campanha: " + JSON.stringify(errorData));
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Campanha gerada e suspensa")
+        })
+        .catch(error => {
+            console.error("Erro:", error);
+        });
 }
