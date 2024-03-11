@@ -3,7 +3,7 @@ import { exec } from 'child_process';
 import { runSearch } from './src/scrap/searchGoogleMapsLink.mjs';
 
 
-const rawdata = fs.readFileSync('C:/Users/GIUSEPPE/Documents/CS0/projetoScrapCampanha/GerarScrapECampanhaPcGiuseppe/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
+const rawdata = fs.readFileSync('C:/Users/ComercialNaty/Documents/CS0/gerarScrapECampanha/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
 const populacao = JSON.parse(rawdata);
 
 let cidadesEmbaralhadas;
@@ -100,7 +100,7 @@ async function executeSearchWithRandomDelay(query) {
       }
 
       limparCacheNpm();
-      await runSearch(query);
+      await runSearch(query, cidadeSorteada);
       return;
     } catch (error) {
       // console.error(`Erro na tentativa ${tentativas + 1}: ${error.message}`);

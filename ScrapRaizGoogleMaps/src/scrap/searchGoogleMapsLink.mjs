@@ -2,7 +2,7 @@ import * as cheerio from "cheerio";
 import puppeteerExtra from "puppeteer-extra";
 import stealthPlugin from "puppeteer-extra-plugin-stealth";
 import { excel } from '../GeneratePlanilha/excel.mjs';
-import generateCampaign  from "../generateCampaign/teste.js";
+import sendCampaignData  from "../generateCampaign/generateCampaign.js";
 
 
 // import { searchGoogleMapsPage } from "../scrap/searchGoogleMapsPage.mjs";
@@ -229,7 +229,7 @@ export async function runSearch(query) {
 
         if (results) {
             excel(results, query);
-            generateCampaign(results, query)
+            sendCampaignData(results, query)
 
             // Limpar o cache somente se a busca for bem-sucedida
             //limparCacheNpm();
