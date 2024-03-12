@@ -5,12 +5,7 @@ import { excel } from '../GeneratePlanilha/excel.mjs';
 import sendCampaignData  from "../generateCampaign/generateCampaign.js";
 
 
-// import { searchGoogleMapsPage } from "../scrap/searchGoogleMapsPage.mjs";
-import { searchGoogleMapsPage } from "../../../ScrapRaizGoogleMaps/src/scrap/searchGoogleMapsPage.mjs";
 
-//passar para o parametro da função como primeira chamada.
-
-// function formatTime
 function formatTime(timestamp) {
     let date = new Date();
     let options = { hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -23,27 +18,15 @@ async function searchGoogleMapsLinks(query) {
     try {
         puppeteerExtra.use(stealthPlugin());
         const start = Date.now();
-        // console.log(`Code Google MapsLinks Start at ${formatTime(start)}`);
 
         const browser = await puppeteerExtra.launch({
             defaultViewport: { width: 1200, height: 800 }, // Defina as dimensões desejadas da janela do navegador
             headless: false,
-            //headless: 'new',
-            //slowMo: 350,
-            //devtools: true,
             executablePath: "", // your path here em caso de usar chromium
             timeout: 30000,
             ignoreHTTPSErrors: true,
             args: ['--disabled-setuid-sandbox', '--no-sandbox', '--disable-web-security', '--disable-features=IsolateOrigins,site-per-process', '--disable-features=NetworkQualityEstimator'],
         });
-
-        // const browser = await puppeteerExtra.launch({
-        //   args: chromium.args,
-        //   defaultViewport: chromium.defaultViewport,
-        //   executablePath: await chromium.executablePath(),
-        //   headless: "new",
-        //   ignoreHTTPSErrors: true,
-        // });
 
         const page = await browser.newPage();
         await page.setRequestInterception(true);
@@ -56,18 +39,17 @@ async function searchGoogleMapsLinks(query) {
         });
 
         try {
-            //page.on('console', message => console.log(`Console: ${message.text()}`)); // Se houver erro ao abrir a página, descomentar essa linha para ver o erro no console
             await new Promise(resolve => setTimeout(resolve, 1500));
             await page.goto(`https://www.google.com/maps/search/${query.split(" ").join("+")}`, {
                 waitUntil: ['domcontentloaded', 'networkidle2']
             });
             await new Promise(resolve => setTimeout(resolve, 5000));
-            // Força o recarregamento da página
-            await page.reload({ waitUntil: ['domcontentloaded', 'networkidle2'] });
+
+            await page.reload({ waitUntil: ['domcontentloaded', 'networkidle2'] }); // Força o recarregamento da página
             await page.waitForSelector('div[role="feed"]', { timeout: 12000 });
+        
         } catch (error) {
 
-            // console.log("error going to  Google MapsLinks", error.message);
             page.setDefaultTimeout(10000);
         }
         async function autoScroll(page) {
@@ -95,14 +77,12 @@ async function searchGoogleMapsLinks(query) {
 
                             await new Promise((resolve) => setTimeout(resolve, 3000));
 
-                            // Calculate scrollHeight after waiting
-                            var scrollHeightAfter = wrapper.scrollHeight;
+                            var scrollHeightAfter = wrapper.scrollHeight; // Calculate scrollHeight after waiting
 
-                            if (scrollHeightAfter > scrollHeightBefore) {
-                                // More content loaded, keep scrolling
+                            if (scrollHeightAfter > scrollHeightBefore) { // More content loaded, keep scrolling
                                 return;
-                            } else {
-                                // No more content loaded, stop scrolling
+                            }
+                            else { // No more content loaded, stop scrolling
                                 clearInterval(timer);
                                 resolve();
                             }
@@ -124,9 +104,7 @@ async function searchGoogleMapsLinks(query) {
 
         await page.setRequestInterception(false);
         await browser.close();
-        // console.log("browser closed");
 
-        // get all a tag parent where a tag href includes /maps/place/
         const $ = cheerio.load(html);
         const aTags = $("a");
         const parents = [];
@@ -151,8 +129,7 @@ async function searchGoogleMapsLinks(query) {
                     .find("span.fontBodyMedium > span")
                     .attr("aria-label");
 
-                // get the first div that includes the class fontBodyMedium
-                const bodyDiv = parent.find("div.fontBodyMedium").first();
+                const bodyDiv = parent.find("div.fontBodyMedium").first(); // get the first div that includes the class fontBodyMedium
                 const children = bodyDiv.children();
                 const lastChild = children.last();
                 const lastOfLast = lastChild.children().last();
@@ -167,81 +144,47 @@ async function searchGoogleMapsLinks(query) {
                 const category = firstOfLast?.text()?.split("·")?.[0]?.trim() || null;
                 const fullText = lastChild.children().first().text().trim();
 
-// -----------
-                // async function urlPages(googleUrl) {
-                //     let result = null;
-                //     while (googleUrl > 0) {
-                //         try {
-                //             result = await searchGoogleMapsPage(url);
-                //             return result;
-                //         } catch (error) {
-                //             console.log("error at urlPages", error.message);
-                //         }
-                //     }
-                //     return result;
-                // }
-
-                // let result = await urlPages(googleUrl);
-                // let address, photos, redesSociais;
-
-                // if (result) {
-                //     address = result.address;
-                //     photos = result.photos;
-                //     redesSociais = result.redesSociais;
-                // } else {
-                //     console.log('urlPages(url) returned null');
-                // }
-// ------------
                 businesses.push({
                     placeId: `ChI${url?.split("?")?.[0]?.split("ChI")?.[1]}`,
                     status: statusValue,
                     category: category,
                     address: firstOfLast?.text()?.split("·")?.[1]?.trim(),
-                    //address: address || null,
                     storeName: storeName ? storeName.toUpperCase() : null,
                     phone: lastOfLast?.text()?.split("·")?.[1]?.trim() || null,
                     bizWebsite: website || null,
                     ratingText: ratingText || null,
                     stars: starsValue || null,
-                   // photos: photos || null,
                     numberOfReviews: numberOfReviewsValue || null,
                     googleUrl: url || null,
                 });
             });
         }
         const end = Date.now();
-        // console.log("Results businesses:", businesses.length);
-        // console.log(`time in seconds ${Math.floor((end - start) / 1000)}`);
-        // console.log(`Code links finished at ${formatTime(end)}\n\n`);
 
         return businesses;
 
     } catch (error) {
-        // console.log("error at Google MapsLinks", error.message);
         return null;
     }
 }
 
-//searchGoogleMapsLinks(query);
 export async function runSearch(query) {
     try {
         const results = await searchGoogleMapsLinks(query);
 
         if (results) {
             excel(results, query);
-            await sendCampaignData(results, query)
-
-
-            // Limpar o cache somente se a busca for bem-sucedida
-            //limparCacheNpm();
-        } else {
-            console.error('Ocorreu um erro ao buscar no Google MapsLinks.');
+            await sendCampaignData(results, query)        
         }
+
     } catch (error) {
         console.error('Erro durante a execução da busca Google runSearch:', error);
     }
 }
-// Chame a função runSearch passando a query desejada para testes descomentar as duas linha abaixo e executar o arquivo
-const query = `'Monitoramento' Fortaleza - CE`;
-runSearch(query);
 
+
+
+// Para testes, Chame a função runSearch passando a query desejada e execute o arquivo
+
+// const query = `'Monitoramento' Fortaleza - CE`;
+// runSearch(query);
