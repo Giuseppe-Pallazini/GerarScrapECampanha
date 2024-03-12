@@ -1,21 +1,21 @@
 import { formataNumero } from "./ValidateTelefone.mjs";
 
-let result = [
-    {
-      placeId: 'ChIJ0bE6zolP4ZQRDi4-re7MruY',
-      status: 'Aberto',
-      category: 'Fornecedor de sistema de segurança',
-      address: 'Coronel Alberto shimitt Edificio laura 10, sala o1',
-      storeName: 'neo tecnologia - soluções em segurança, controle de acesso, portaria virtual, automação, rastreamento e monitoramento.',
-      phone: '5511988749207',
-      bizWebsite: "https://www.camarapinheiropreto.com.br",
-      ratingText: '4,0 estrelas 2 comentários',
-      stars: 4,
-      numberOfReviews: 2,
-      googleUrl: 'https://www.google.com/maps/place/AG+Monitoramento/data=!4m7!3m6!1s0x94e14f89ce3ab1d1:0xe6aecceead3e2e0e!8m2!3d-27.0048589!4d-51.153262!16s%2Fg%2F11gzn52hvy!19sChIJ0bE6zolP4ZQRDi4-re7MruY?authuser=0&hl=pt-BR&rclk=1'
-    }
-  ]
-sendCampaignData(result, "'Monitoramento' São Domingos do Norte - ES");
+// let result = [
+//     {
+//       placeId: 'ChIJ0bE6zolP4ZQRDi4-re7MruY',
+//       status: 'Aberto',
+//       category: 'Fornecedor de sistema de segurança',
+//       address: 'Coronel Alberto shimitt Edificio laura 10, sala o1',
+//       storeName: 'neo tecnologia - soluções em segurança, controle de acesso, portaria virtual, automação, rastreamento e monitoramento.',
+//       phone: '5511988749207',
+//       bizWebsite: "https://www.camarapinheiropreto.com.br",
+//       ratingText: '4,0 estrelas 2 comentários',
+//       stars: 4,
+//       numberOfReviews: 2,
+//       googleUrl: 'https://www.google.com/maps/place/AG+Monitoramento/data=!4m7!3m6!1s0x94e14f89ce3ab1d1:0xe6aecceead3e2e0e!8m2!3d-27.0048589!4d-51.153262!16s%2Fg%2F11gzn52hvy!19sChIJ0bE6zolP4ZQRDi4-re7MruY?authuser=0&hl=pt-BR&rclk=1'
+//     }
+//   ]
+// sendCampaignData(result, "'Monitoramento' São Domingos do Norte - ES");
 
 export default async function sendCampaignData(result, query) {
     let nameCampaign = query.replace(/'/g, "");
