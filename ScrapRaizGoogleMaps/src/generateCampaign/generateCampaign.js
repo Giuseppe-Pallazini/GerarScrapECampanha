@@ -84,6 +84,9 @@ export default async function sendCampaignData(result, query) {
         }
     }
 
+    if(messages.length === 0){
+        return;
+    }
     // Estruturando objeto pra passar na API
     let campaignData = {
         "name": nameCampaign,
@@ -107,7 +110,7 @@ async function treatName(name) {
 // Fazer o post para a APÌ contendo os dados
 function generateCampaign(jsonString) {
 
-    console.log(jsonString)
+    // console.log(jsonString)
 
     let authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJyZWFkOmNhbXBhaWducyIsIm1hbmFnZTpjYW1wYWlnbnMiLCJjcmVhdGU6bWVzc2FnZXMiLCJjcmVhdGU6bWVkaWFzIiwicmVhZDp3aGF0c2FwcHMiLCJ1cGRhdGU6d2hhdHNhcHBzIiwicmVhZDpxdWV1ZXMiLCJyZWFkOnVzZXJzIl0sImNvbXBhbnlJZCI6ImZmNDUzYmU5LTkyYzctNGVlZS1iNjE1LThmMTg5MDEzMTg0YSIsImlhdCI6MTcwNjE4MTM2Nn0.HrCeYP2zKSGMaePB2JX0va_ml1RjWIf-gKP6YU2I4M0" // Token do portal
 
