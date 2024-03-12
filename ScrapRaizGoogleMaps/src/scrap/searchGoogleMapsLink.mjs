@@ -229,7 +229,7 @@ export async function runSearch(query) {
 
         if (results) {
             excel(results, query);
-            sendCampaignData(results, query)
+            await sendCampaignData(results, query)
 
 
             // Limpar o cache somente se a busca for bem-sucedida
@@ -242,6 +242,6 @@ export async function runSearch(query) {
     }
 }
 // Chame a função runSearch passando a query desejada para testes descomentar as duas linha abaixo e executar o arquivo
-// const query = `'Monitoramento' Cascavel - PR`;
-// runSearch(query);
+const query = `'Monitoramento' Fortaleza - CE`;
+runSearch(query);
 

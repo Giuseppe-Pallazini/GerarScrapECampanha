@@ -93,7 +93,7 @@ export function criarPlanilha(data) {
 
 // Função para salvar o arquivo
 export async function salvarArquivo(workbook, query) {
-  const __filename = path.normalize('C:/Users/GIUSEPPE/Documents/CS0/projetoScrapCampanha/GerarScrapECampanhaPcGiuseppe/ScrapRaizGoogleMaps/arquivos');;
+  const __filename = path.normalize('C:/Users/ComercialNaty/Documents/CS0/gerarScrapECampanha/ScrapRaizGoogleMaps/arquivos');
   if (!fs.existsSync(__filename)) {
     fs.mkdirSync(__filename, { recursive: true });
     // console.log("O diretório foi criado.");

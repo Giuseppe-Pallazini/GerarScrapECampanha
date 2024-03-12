@@ -129,4 +129,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "ES", 100000);
+index("Monitoramento", "Fortaleza - CE", 100000);
