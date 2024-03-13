@@ -59,11 +59,10 @@ import { formataNumero } from "./ValidateTelefone.mjs";
  
 export default async function sendCampaignData(result, query) {
     let nameCampaign = query.replace(/'/g, "");
-    let whatsappId = "4ca207b4-3ad7-44ab-9d39-e5ef79713ffe"; // id da conexão
-    let queueId = "dc45f8f5-ef57-45ba-881e-0c14dffd72f8"; // id da fila
+    let whatsappId = "4ca207b4-3ad7-44ab-9d39-e5ef79713ffe";
+    let queueId = "dc45f8f5-ef57-45ba-881e-0c14dffd72f8";
     let messages = [];
 
-    // Adicionando as mensagens
     for (let i = 0; i < result.length; i++) {
         if (!(result[i].bizWebsite)) {
             continue
