@@ -20,10 +20,10 @@ function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
   if (!cidadesEmbaralhadas || estadoDesejado !== estadoDesejado) {
     // Se não houver cidades embaralhadas ou o estado for diferente, reembaralhe
 
-    if(cidade.total <= parseInt(populacaoDesejada)){
-      console.log("cidade com populaçao menor que: " + cidade.total)
-      return;
-    }
+    // if(cidade.total <= parseInt(populacaoDesejada)){
+    //   console.log("cidade com populaçao menor que: " + cidade.total)
+    //   return;
+    // }
 
     const cidadesPorEstado = cidade.reduce((acc, item) => {
       const { cidade, uf } = item;
@@ -104,7 +104,7 @@ async function executeSearchWithRandomDelay(query) {
         await new Promise(resolve => setTimeout(resolve, waitTime));
       }
 
-      // limparCacheNpm();
+      limparCacheNpm();
       await runSearch(query);
       return;
     } catch (error) {
@@ -134,4 +134,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "ES", 100000);
+index("Monitoramento", "PA", 100000);

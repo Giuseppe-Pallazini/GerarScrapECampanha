@@ -186,5 +186,5 @@ export async function runSearch(query) {
 
 // Para testes, Chame a função runSearch passando a query desejada e execute o arquivo
 
-// const query = `'Monitoramento' Fortaleza - CE`;
-// runSearch(query);
+const query = `'Monitoramento' Cumaru do Norte - PA`;
+runSearch(query);
