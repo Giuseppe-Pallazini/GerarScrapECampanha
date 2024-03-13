@@ -32,8 +32,8 @@ import { formataNumero } from "./ValidateTelefone.mjs";
 
 export default async function sendCampaignData(result, query) {
     let nameCampaign = query.replace(/'/g, "");
-    let whatsappId = "4ca207b4-3ad7-44ab-9d39-e5ef79713ffe"; // id da conexão
-    let queueId = "dc45f8f5-ef57-45ba-881e-0c14dffd72f8"; // id da fila
+    let whatsappId = "4ca207b4-3ad7-44ab-9d39-e5ef79713ffe";
+    let queueId = "dc45f8f5-ef57-45ba-881e-0c14dffd72f8";
     let messages = [];
 
     // Percorrer o resultado do scap
@@ -42,10 +42,11 @@ export default async function sendCampaignData(result, query) {
         if (!(result[i].bizWebsite)) { // Caso não tenha site
             continue
         }
-
-        if (result[i].bizWebsite.includes(".com/", ".com.br/")) { // Caso o site não contenha ".com" ou ".com.br"
-
-            if (!(result[i].phone)) { // se o número vier nulo
+        if (result[i].bizWebsite.includes(".com")) { 
+            if (result[i].bizWebsite.includes("instagram")){
+                return;
+            }
+            if (!(result[i].phone)) {
                 continue
             }
 

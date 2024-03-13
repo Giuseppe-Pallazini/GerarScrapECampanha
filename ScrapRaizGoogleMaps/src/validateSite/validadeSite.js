@@ -1,1 +1,0 @@
-// Aqui vamos implementar a função que valida o dominio publico ou privado.

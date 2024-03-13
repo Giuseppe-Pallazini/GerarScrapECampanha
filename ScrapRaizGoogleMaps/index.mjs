@@ -14,27 +14,24 @@ function shuffleArray(array) {
   }
   return array;
 }
-let intervalId; // Variável para armazenar o ID do intervalo
 
 function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
   if (!cidadesEmbaralhadas || estadoDesejado !== estadoDesejado) {
-    // Se não houver cidades embaralhadas ou o estado for diferente, reembaralhe
+      const cidadesPorEstado = cidade.reduce((accumulator, item) => {
 
-    // if(cidade.total <= parseInt(populacaoDesejada)){
-    //   console.log("cidade com populaçao menor que: " + cidade.total)
-    //   return;
-    // }
+        const { cidade, uf } = item;
+        const estado = uf || item.estado;
 
-    const cidadesPorEstado = cidade.reduce((acc, item) => {
-      const { cidade, uf } = item;
-      const estado = uf || item.estado;
-      if (!acc[estado]) {
-        acc[estado] = [];
-      }
-      acc[estado].push(cidade);
-      return acc;
+        if (!accumulator[estado]) {
+          accumulator[estado] = [];
+        }
+        if(item.total >= parseInt(populacaoDesejada)){
+          accumulator[estado].push(cidade);
+        }
+
+      return accumulator;
     }, {});
-
+    console.log(cidadesPorEstado)
     const estadoUpperCase = estadoDesejado.toUpperCase();
     const cidadesDoEstado = cidadesPorEstado[estadoUpperCase] || [];
     cidadesEmbaralhadas = shuffleArray(cidadesDoEstado.slice());
@@ -50,19 +47,6 @@ function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
   };
 }
 
-
-function handleSorteio() {
-  // Aqui você pode fazer o que for necessário antes de iniciar um novo sorteio
-  // Por exemplo, imprimir uma mensagem indicando o início de um novo ciclo
-  // console.log('Iniciando novo ciclo de sorteios...');
-
-  // Chama a função para sortear cidades por estado
-  const sorteioPorEstado = sortearCidadesPorEstado(estadoDesejado);
-
-  // Inicia o primeiro sorteio
-  sorteioPorEstado();
-}
-
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -72,7 +56,6 @@ export function processQuery(query) {
   var estado = query.split(" ").slice(-1)[0].toUpperCase();
   var termo = query.split(" ").slice(0, 1).join(" ").toUpperCase();
 
-  // Retorna as informações processadas
   return { cidade, estado, termo };
 }
 
@@ -82,13 +65,10 @@ async function index(termo, estado, populacaoDesejada) {
 
   while ((cidadeSorteada = sorteioCidade()) !== null) {
     const query = `'${termo}' ${cidadeSorteada} - ${estado}`;
-    // console.log(`Buscando por: ${query}`);
     await executeSearchWithRandomDelay(query);
-    // console.log(`Esperando por 180 segundos antes da próxima chamada.`);
     await new Promise(resolve => setTimeout(resolve, 180 * 1000));
   }
 }
-
 
 async function executeSearchWithRandomDelay(query) {
   const maxTentativas = 3;
@@ -119,7 +99,7 @@ async function executeSearchWithRandomDelay(query) {
 
 
 function limparCacheNpm() {
-  exec('npm cache verify', (error, stdout, stderr) => {
+  exec('npm cache verify', (error, stderr) => {
     if (error) {
       console.error(`Erro ao verificar o cache: ${error.message}`);
       return;
@@ -128,7 +108,7 @@ function limparCacheNpm() {
       console.error(`Erro no comando: ${stderr}`);
       return;
     }
-    //console.log(`Cache verificado com sucesso: ${stdout}`);
+
   });
 }
 
