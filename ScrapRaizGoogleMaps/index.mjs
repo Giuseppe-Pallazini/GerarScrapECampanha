@@ -4,7 +4,7 @@ import { runSearch } from './src/scrap/searchGoogleMapsLink.mjs';
 
 
 const rawdata = fs.readFileSync('C:/Users/ComercialNaty/Documents/CS0/gerarScrapECampanha/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
-const populacao = JSON.parse(rawdata);
+const cidade = JSON.parse(rawdata);
 
 let cidadesEmbaralhadas;
 function shuffleArray(array) {
@@ -16,11 +16,16 @@ function shuffleArray(array) {
 }
 let intervalId; // Variável para armazenar o ID do intervalo
 
-function sortearCidadesPorEstado(estadoDesejado) {
+function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
   if (!cidadesEmbaralhadas || estadoDesejado !== estadoDesejado) {
     // Se não houver cidades embaralhadas ou o estado for diferente, reembaralhe
 
-    const cidadesPorEstado = populacao.reduce((acc, item) => {
+    if(cidade.total <= parseInt(populacaoDesejada)){
+      console.log("cidade com populaçao menor que: " + cidade.total)
+      return;
+    }
+
+    const cidadesPorEstado = cidade.reduce((acc, item) => {
       const { cidade, uf } = item;
       const estado = uf || item.estado;
       if (!acc[estado]) {
@@ -71,8 +76,8 @@ export function processQuery(query) {
   return { cidade, estado, termo };
 }
 
-async function index(termo, estado) {
-  const sorteioCidade = sortearCidadesPorEstado(estado);
+async function index(termo, estado, populacaoDesejada) {
+  const sorteioCidade = sortearCidadesPorEstado(estado, populacaoDesejada);
   let cidadeSorteada;
 
   while ((cidadeSorteada = sorteioCidade()) !== null) {
@@ -99,7 +104,7 @@ async function executeSearchWithRandomDelay(query) {
         await new Promise(resolve => setTimeout(resolve, waitTime));
       }
 
-      limparCacheNpm();
+      // limparCacheNpm();
       await runSearch(query);
       return;
     } catch (error) {
@@ -129,4 +134,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "Fortaleza - CE", 100000);
+index("Monitoramento", "ES", 100000);
