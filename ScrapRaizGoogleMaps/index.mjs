@@ -3,7 +3,7 @@ import { exec } from 'child_process';
 import { runSearch } from './src/scrap/searchGoogleMapsLink.mjs';
 
 
-const rawdata = fs.readFileSync('///Users/joaovitorvogelvieira/Documents/GitHub/scrapNaty/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
+const rawdata = fs.readFileSync('C:/Users/ComercialNaty/Documents/CS0/gerarScrapECampanha/ScrapRaizGoogleMaps/src/populacao/populacao_2020.json');
 const cidade = JSON.parse(rawdata);
 
 let cidadesEmbaralhadas;
@@ -112,4 +112,6 @@ function limparCacheNpm() {
   });
 }
 
-index("Monitoramento", "SC", 100000);
+
+// Uso da função index com o estado desejado
+index("Monitoramento", "PA", 100000);

@@ -1,6 +1,14 @@
   export async function formataNumero(dado) {
     let numero = dado.toString();
 
+    let numerosCidade = []
+    numerosCidade.push(numero)
+
+    if(numerosCidade.includes(numero))  {
+      return
+    }
+
+
     numero = numero.replace(/\D/g, "");
 
     const fixos = ["1", "2", "3", "4", "5"];
@@ -30,6 +38,10 @@
       } else {
         // console.log("Número inválido!");
       }
+    }
+
+    if (numero.length < 10 || numero.length > 14) {
+      return
     }
 
     numero = "55" + numero;
