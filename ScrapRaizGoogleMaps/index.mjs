@@ -14,26 +14,24 @@ function shuffleArray(array) {
   }
   return array;
 }
-let intervalId; // Variável para armazenar o ID do intervalo
 
 function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
   if (!cidadesEmbaralhadas || estadoDesejado !== estadoDesejado) {
-    // Se não houver cidades embaralhadas ou o estado for diferente, reembaralhe
-    
-    if(cidade.total < populacaoDesejada){
-      console.log("cidade com populaçao menor que: " + cidade.total)
-      return;
-    }
       const cidadesPorEstado = cidade.reduce((accumulator, item) => {
-      const { cidade, uf } = item;
-      const estado = uf || item.estado;
-      if (!accumulator[estado]) {
-        accumulator[estado] = [];
-      }
-      accumulator[estado].push(cidade);
+
+        const { cidade, uf } = item;
+        const estado = uf || item.estado;
+
+        if (!accumulator[estado]) {
+          accumulator[estado] = [];
+        }
+        if(item.total >= parseInt(populacaoDesejada)){
+          accumulator[estado].push(cidade);
+        }
+
       return accumulator;
     }, {});
-
+    console.log(cidadesPorEstado)
     const estadoUpperCase = estadoDesejado.toUpperCase();
     const cidadesDoEstado = cidadesPorEstado[estadoUpperCase] || [];
     cidadesEmbaralhadas = shuffleArray(cidadesDoEstado.slice());
@@ -101,7 +99,7 @@ async function executeSearchWithRandomDelay(query) {
 
 
 function limparCacheNpm() {
-  exec('npm cache verify', (error, §, stderr) => {
+  exec('npm cache verify', (error, stderr) => {
     if (error) {
       console.error(`Erro ao verificar o cache: ${error.message}`);
       return;
@@ -114,5 +112,4 @@ function limparCacheNpm() {
   });
 }
 
-
-index("Monitoramento", "ES", 100000);
+index("Monitoramento", "SC", 100000);

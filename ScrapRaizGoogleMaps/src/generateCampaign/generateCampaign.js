@@ -68,9 +68,11 @@ export default async function sendCampaignData(result, query) {
         if (!(result[i].bizWebsite)) {
             continue
         }
-        if (result[i].bizWebsite.includes(".com")) { // Só entrará na campanha caso tenha site
-
-            if (!(result[i].phone)) { // se o número vier nulo
+        if (result[i].bizWebsite.includes(".com")) { 
+            if (result[i].bizWebsite.includes("instagram")){
+                return;
+            }
+            if (!(result[i].phone)) {
                 continue
             }
 
