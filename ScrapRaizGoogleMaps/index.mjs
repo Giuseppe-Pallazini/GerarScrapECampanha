@@ -18,23 +18,20 @@ let intervalId; // Variável para armazenar o ID do intervalo
 
 function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
   if (!cidadesEmbaralhadas || estadoDesejado !== estadoDesejado) {
-    // Se não houver cidades embaralhadas ou o estado for diferente, reembaralhe
+      const cidadesPorEstado = cidade.reduce((accumulator, item) => {
 
-    // if(cidade.total <= parseInt(populacaoDesejada)){
-    //   console.log("cidade com populaçao menor que: " + cidade.total)
-    //   return;
-    // }
+        const { cidade, uf } = item;
+        const estado = uf || item.estado;
 
-    const cidadesPorEstado = cidade.reduce((acc, item) => {
-      const { cidade, uf } = item;
-      const estado = uf || item.estado;
-      if (!acc[estado]) {
-        acc[estado] = [];
-      }
-      acc[estado].push(cidade);
-      return acc;
+        if (!accumulator[estado]) {
+          accumulator[estado] = [];
+        }
+        if(item.total >= parseInt(populacaoDesejada)){
+          accumulator[estado].push(cidade);
+        }
+
+      return accumulator;
     }, {});
-
     const estadoUpperCase = estadoDesejado.toUpperCase();
     const cidadesDoEstado = cidadesPorEstado[estadoUpperCase] || [];
     cidadesEmbaralhadas = shuffleArray(cidadesDoEstado.slice());
@@ -49,7 +46,6 @@ function sortearCidadesPorEstado(estadoDesejado, populacaoDesejada) {
     return cidadesEmbaralhadas.shift();
   };
 }
-
 
 function handleSorteio() {
   // Aqui você pode fazer o que for necessário antes de iniciar um novo sorteio

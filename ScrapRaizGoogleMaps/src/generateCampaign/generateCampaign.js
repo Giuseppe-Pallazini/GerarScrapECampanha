@@ -96,7 +96,7 @@ async function treatName(name) {
     let words = name.toLowerCase().trim().split(/\s+/);
     let newName = words.slice(0,3);
 
-    let wordsBlock = ['-', '.', '/', 'LTDA', 'inteligência', 'inteligente', 'e', '('];
+    let wordsBlock = ['-', '.', '/', 'LTDA', 'inteligência', 'inteligente', 'e', '(', 'de'];
 
 
     if(wordsBlock.includes(newName[newName.length - 1])) { // verificando se a última palavra é "inútil"

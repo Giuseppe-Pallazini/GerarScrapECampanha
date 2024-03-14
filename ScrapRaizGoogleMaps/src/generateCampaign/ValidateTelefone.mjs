@@ -1,12 +1,12 @@
   export async function formataNumero(dado) {
     let numero = dado.toString();
 
-    let numerosCidade = []
-    numerosCidade.push(numero)
+    // let numerosCidade = []
+    // numerosCidade.push(numero)
 
-    if(numerosCidade.includes(numero))  {
-      return
-    }
+    // if(numerosCidade.includes(numero))  {
+    //   return
+    // }
 
 
     numero = numero.replace(/\D/g, "");
