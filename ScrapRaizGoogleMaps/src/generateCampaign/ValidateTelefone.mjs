@@ -1,12 +1,12 @@
   export async function formataNumero(dado) {
     let numero = dado.toString();
 
-    let numerosCidade = []
-    numerosCidade.push(numero)
+    // let numerosCidade = []
+    // numerosCidade.push(numero)
 
-    if(numerosCidade.includes(numero))  {
-      return
-    }
+    // if(numerosCidade.includes(numero))  {
+    //   return
+    // }
 
 
     numero = numero.replace(/\D/g, "");
@@ -15,9 +15,8 @@
     const estadosComNove = ["1", "2", "3"];
 
     if (numero.length == 10) {
-      // console.log("tem 10 digitos ou menos");
       if (fixos.includes(numero[2])) {
-        // console.log("é fixo!");
+        return
       }
       if (estadosComNove.includes(numero[0])) {
         // console.log("nove adicionado ao " + numero);

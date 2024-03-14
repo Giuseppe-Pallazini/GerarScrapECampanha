@@ -1,7 +1,6 @@
 import * as cheerio from "cheerio";
 import puppeteerExtra from "puppeteer-extra";
 import stealthPlugin from "puppeteer-extra-plugin-stealth";
-import { excel } from '../GeneratePlanilha/excel.mjs';
 import sendCampaignData  from "../generateCampaign/generateCampaign.js";
 
 
