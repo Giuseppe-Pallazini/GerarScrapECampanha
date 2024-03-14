@@ -30,6 +30,9 @@ import { formataNumero } from "./ValidateTelefone.mjs";
 //   ]
 // sendCampaignData(result, "'Monitoramento' São Domingos do Norte - ES");
 
+let date = new Date;
+var dateNow = date.getHours() + ":" + date.getMinutes()
+
 export default async function sendCampaignData(result, query) {
     let nameCampaign = query.replace(/'/g, "");
     let whatsappId = "4ca207b4-3ad7-44ab-9d39-e5ef79713ffe";
@@ -44,7 +47,7 @@ export default async function sendCampaignData(result, query) {
         }
         if (result[i].bizWebsite.includes(".com")) { 
             if (result[i].bizWebsite.includes("instagram")){
-                return;
+                continue;
             }
             if (!(result[i].phone)) {
                 continue
@@ -135,7 +138,7 @@ async function generateCampaign(jsonString, query) {
             suspendCampaign(campaignId, authToken, query) // A campanha ja começa iniciada, aqui irá pausa-la
         })
         .catch(error => {
-            console.error("Erro:", error);
+            console.error("Erro:" + error + ' (' + dateNow + 'h' + ')');
         });
 }
 
@@ -160,7 +163,7 @@ function suspendCampaign(campaignId, authToken, query) {
                 return response.json();
             })
             .then(data => {
-                console.log("Campanha gerada e suspensa: ", query);
+                console.log("Campanha gerada e suspensa: " + query + ' (' + dateNow + 'h' + ')');
                 console.log(" ---------- / ---------- ");
             })
     }
