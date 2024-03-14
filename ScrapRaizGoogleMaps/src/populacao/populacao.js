@@ -1,1 +1,0 @@
-// esqueci a regra repensar
