@@ -172,8 +172,9 @@ export async function runSearch(query) {
         const results = await searchGoogleMapsLinks(query);
 
         if (results) {
-            excel(results, query);
-            await sendCampaignData(results, query)        
+            // excel(results, query);
+            console.log('Gerando campanha:')
+            await sendCampaignData(results, query)
         }
 
     } catch (error) {

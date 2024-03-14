@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { exec } from 'child_process';
+// import { exec } from 'child_process';
 import { runSearch } from './src/scrap/searchGoogleMapsLink.mjs';
 
 
@@ -61,7 +61,6 @@ export function processQuery(query) {
 async function index(termo, estado, populacaoDesejada) {
   const sorteioCidade = sortearCidadesPorEstado(estado, populacaoDesejada);
   let cidadeSorteada;
-
   while ((cidadeSorteada = sorteioCidade()) !== null) {
     const query = `'${termo}' ${cidadeSorteada} - ${estado}`;
     await executeSearchWithRandomDelay(query);
@@ -83,9 +82,10 @@ async function executeSearchWithRandomDelay(query) {
         await new Promise(resolve => setTimeout(resolve, waitTime));
       }
 
-      limparCacheNpm();
+      // limparCacheNpm();
       await runSearch(query);
       return;
+
     } catch (error) {
       // console.error(`Erro na tentativa ${tentativas + 1}: ${error.message}`);
       tentativas++;
@@ -113,4 +113,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "PA", 100000);
+index("Monitoramento", "MT", 80000);
