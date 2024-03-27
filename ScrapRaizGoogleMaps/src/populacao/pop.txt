@@ -1,0 +1,161 @@
+{
+        "cidade": "Santa Cruz do Sul",
+        "uf": "RS",
+        "total": 131365
+    },
+     {
+        "cidade": "Uruguaiana",
+        "uf": "RS",
+        "total": 126866
+    },
+       {
+        "cidade": "Bento Gonçalves",
+        "uf": "RS",
+        "total": 121803
+    },
+    {
+        "cidade": "Erechim",
+        "uf": "RS",
+        "total": 106633
+    },
+    {
+            "cidade": "Cachoeirinha",
+        "uf": "RS",
+        "total": 131240
+    },
+        {
+        "cidade": "Passo Fundo",
+        "uf": "RS",
+        "total": 204722
+    },
+        {
+        "cidade": "Canoas",
+        "uf": "RS",
+        "total": 348208
+    },
+        {
+        "cidade": "Santa Maria",
+        "uf": "RS",
+        "total": 283677
+    },
+
+        {
+        "cidade": "Campina Grande",
+        "uf": "PB",
+        "total": 411807
+    },
+        {
+        "cidade": "Castro",
+        "uf": "PR",
+        "total": 71809
+    },
+        {
+        "cidade": "Sarandi",
+        "uf": "RS",
+        "total": 24763
+    },
+        {
+        "cidade": "Fazenda Rio Grande",
+        "uf": "PR",
+        "total": 102004
+    },
+        {
+        "cidade": "São José dos Pinhais",
+        "uf": "PR",
+        "total": 329058
+    },
+        {
+        "cidade": "Londrina",
+        "uf": "PR",
+        "total": 575377
+    },
+        {
+        "cidade": "Francisco Beltrão",
+        "uf": "PR",
+        "total": 92216
+    },
+        {
+        "cidade": "Pinhais",
+        "uf": "PR",
+        "total": 133490
+    },
+        {
+        "cidade": "Foz do Iguaçu",
+        "uf": "PR",
+        "total": 258248
+    },
+        {
+        "cidade": "Rolândia",
+        "uf": "PR",
+        "total": 67383
+    },
+        {
+        "cidade": "Campo Largo",
+        "uf": "PR",
+        "total": 133865
+    },
+        {
+        "cidade": "Ponta Grossa",
+        "uf": "PR",
+        "total": 355336
+    },
+        {
+        "cidade": "Irati",
+        "uf": "PR",
+        "total": 61088
+    },
+        {
+        "cidade": "Maceió",
+        "uf": "AL",
+        "total": 1025360
+    },
+      {
+        "cidade": "Arapiraca",
+        "uf": "AL",
+        "total": 233047
+    },
+        {
+        "cidade": "Colombo",
+        "uf": "PR",
+        "total": 246540
+    },
+        {
+        "cidade": "Santo Antônio de Jesus",
+        "uf": "BA",
+        "total": 102380
+    },
+        {
+        "cidade": "Jequié",
+        "uf": "BA",
+        "total": 156126
+    },
+        {
+        "cidade": "Ilhéus",
+        "uf": "BA",
+        "total": 159923
+    },
+        {
+        "cidade": "Serrinha",
+        "uf": "BA",
+        "total": 81286
+    },
+        {
+        "cidade": "Salvador",
+        "uf": "BA",
+        "total": 2886698
+    },
+       {
+        "cidade": "Paulo Afonso",
+        "uf": "BA",
+        "total": 118516
+    },
+        {
+        "cidade": "Itabuna",
+        "uf": "BA",
+        "total": 213685
+    },  
+        {
+        "cidade": "Porto Seguro",
+        "uf": "BA",
+        "total": 150658
+    },

@@ -82,8 +82,8 @@ async function executeSearchWithRandomDelay(query) {
         await new Promise(resolve => setTimeout(resolve, waitTime));
       }
 
-      // limparCacheNpm();
       await runSearch(query);
+      //limparCacheNpm();
       return;
 
     } catch (error) {
@@ -113,4 +113,4 @@ function limparCacheNpm() {
 
 
 // Uso da função index com o estado desejado
-index("Monitoramento", "MT", 80000);
+index("Materiais de construção", "BA", 80000);

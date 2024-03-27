@@ -19,11 +19,7 @@
         "uf": "DF",
         "total": 3055149
     },
-    {
-        "cidade": "Salvador",
-        "uf": "BA",
-        "total": 2886698
-    },
+
     {
         "cidade": "Fortaleza",
         "uf": "CE",
@@ -84,16 +80,8 @@
         "uf": "RJ",
         "total": 1091737
     },
-    {
-        "cidade": "Maceió",
-        "uf": "AL",
-        "total": 1025360
-    },
-    {
-        "cidade": "Duque de Caxias",
-        "uf": "RJ",
-        "total": 924624
-    },
+
+    
     {
         "cidade": "Campo Grande",
         "uf": "MS",
@@ -189,11 +177,7 @@
         "uf": "GO",
         "total": 590146
     },
-    {
-        "cidade": "Londrina",
-        "uf": "PR",
-        "total": 575377
-    },
+
     {
         "cidade": "Juiz de Fora",
         "uf": "MG",
@@ -309,11 +293,7 @@
         "uf": "AC",
         "total": 413418
     },
-    {
-        "cidade": "Campina Grande",
-        "uf": "PB",
-        "total": 411807
-    },
+
     {
         "cidade": "Piracicaba",
         "uf": "SP",
@@ -380,20 +360,11 @@
         "total": 355901
     },
     {
-        "cidade": "Ponta Grossa",
-        "uf": "PR",
-        "total": 355336
-    },
-    {
         "cidade": "Petrolina",
         "uf": "PE",
         "total": 354317
     },
-    {
-        "cidade": "Canoas",
-        "uf": "RS",
-        "total": 348208
-    },
+
     {
         "cidade": "Pelotas",
         "uf": "RS",
@@ -429,11 +400,7 @@
         "uf": "SP",
         "total": 330845
     },
-    {
-        "cidade": "São José dos Pinhais",
-        "uf": "PR",
-        "total": 329058
-    },
+
     {
         "cidade": "Guarujá",
         "uf": "SP",
@@ -494,11 +461,7 @@
         "uf": "SP",
         "total": 286211
     },
-    {
-        "cidade": "Santa Maria",
-        "uf": "RS",
-        "total": 283677
-    },
+
     {
         "cidade": "Gravataí",
         "uf": "RS",
@@ -554,11 +517,7 @@
         "uf": "MA",
         "total": 259337
     },
-    {
-        "cidade": "Foz do Iguaçu",
-        "uf": "PR",
-        "total": 258248
-    },
+
     {
         "cidade": "Viamão",
         "uf": "RS",
@@ -589,11 +548,7 @@
         "uf": "RS",
         "total": 247032
     },
-    {
-        "cidade": "Colombo",
-        "uf": "PR",
-        "total": 246540
-    },
+
     {
         "cidade": "Magé",
         "uf": "RJ",
@@ -659,11 +614,7 @@
         "uf": "SP",
         "total": 234259
     },
-    {
-        "cidade": "Arapiraca",
-        "uf": "AL",
-        "total": 233047
-    },
+    
     {
         "cidade": "Cabo Frio",
         "uf": "RJ",
@@ -714,11 +665,7 @@
         "uf": "SC",
         "total": 217311
     },
-    {
-        "cidade": "Itabuna",
-        "uf": "BA",
-        "total": 213685
-    },
+
     {
         "cidade": "Parauapebas",
         "uf": "PA",
@@ -764,11 +711,7 @@
         "uf": "RJ",
         "total": 207044
     },
-    {
-        "cidade": "Passo Fundo",
-        "uf": "RS",
-        "total": 204722
-    },
+
     {
         "cidade": "Castanhal",
         "uf": "PA",
@@ -924,11 +867,7 @@
         "uf": "SP",
         "total": 161957
     },
-    {
-        "cidade": "Ilhéus",
-        "uf": "BA",
-        "total": 159923
-    },
+
     {
         "cidade": "Abaetetuba",
         "uf": "PA",
@@ -959,11 +898,7 @@
         "uf": "PR",
         "total": 156174
     },
-    {
-        "cidade": "Jequié",
-        "uf": "BA",
-        "total": 156126
-    },
+
     {
         "cidade": "Rio das Ostras",
         "uf": "RJ",
@@ -1004,11 +939,7 @@
         "uf": "RJ",
         "total": 151335
     },
-    {
-        "cidade": "Porto Seguro",
-        "uf": "BA",
-        "total": 150658
-    },
+
     {
         "cidade": "Botucatu",
         "uf": "SP",
@@ -1115,21 +1046,13 @@
         "uf": "RJ",
         "total": 134293
     },
-    {
-        "cidade": "Campo Largo",
-        "uf": "PR",
-        "total": 133865
-    },
+
     {
         "cidade": "Marituba",
         "uf": "PA",
         "total": 133685
     },
-    {
-        "cidade": "Pinhais",
-        "uf": "PR",
-        "total": 133490
-    },
+
     {
         "cidade": "Crato",
         "uf": "CE",
@@ -1155,15 +1078,11 @@
         "uf": "SP",
         "total": 131626
     },
+    
     {
-        "cidade": "Santa Cruz do Sul",
-        "uf": "RS",
-        "total": 131365
-    },
-    {
-        "cidade": "Cachoeirinha",
-        "uf": "RS",
-        "total": 131240
+        "cidade": "Duque de Caxias",
+        "uf": "RJ",
+        "total": 924624
     },
     {
         "cidade": "Valinhos",
@@ -1215,11 +1134,7 @@
         "uf": "PA",
         "total": 127027
     },
-    {
-        "cidade": "Uruguaiana",
-        "uf": "RS",
-        "total": 126866
-    },
+   
     {
         "cidade": "Guarapari",
         "uf": "ES",
@@ -1315,11 +1230,7 @@
         "uf": "SP",
         "total": 122497
     },
-    {
-        "cidade": "Bento Gonçalves",
-        "uf": "RS",
-        "total": 121803
-    },
+ 
     {
         "cidade": "Bagé",
         "uf": "RS",
@@ -1340,11 +1251,7 @@
         "uf": "SP",
         "total": 119736
     },
-    {
-        "cidade": "Paulo Afonso",
-        "uf": "BA",
-        "total": 118516
-    },
+ 
     {
         "cidade": "Senador Canedo",
         "uf": "GO",
@@ -1485,11 +1392,7 @@
         "uf": "MG",
         "total": 107337
     },
-    {
-        "cidade": "Erechim",
-        "uf": "RS",
-        "total": 106633
-    },
+
     {
         "cidade": "Tubarão",
         "uf": "SC",
@@ -1590,11 +1493,7 @@
         "uf": "AM",
         "total": 102701
     },
-    {
-        "cidade": "Santo Antônio de Jesus",
-        "uf": "BA",
-        "total": 102380
-    },
+
     {
         "cidade": "Vilhena",
         "uf": "RO",
@@ -1605,11 +1504,7 @@
         "uf": "GO",
         "total": 102065
     },
-    {
-        "cidade": "Fazenda Rio Grande",
-        "uf": "PR",
-        "total": 102004
-    },
+
     {
         "cidade": "Mairiporã",
         "uf": "SP",
@@ -1745,11 +1640,7 @@
         "uf": "MG",
         "total": 92603
     },
-    {
-        "cidade": "Francisco Beltrão",
-        "uf": "PR",
-        "total": 92216
-    },
+
     {
         "cidade": "São Roque",
         "uf": "SP",
@@ -2005,11 +1896,7 @@
         "uf": "CE",
         "total": 81778
     },
-    {
-        "cidade": "Serrinha",
-        "uf": "BA",
-        "total": 81286
-    },
+
     {
         "cidade": "Aquiraz",
         "uf": "CE",
@@ -2310,11 +2197,7 @@
         "uf": "PA",
         "total": 71837
     },
-    {
-        "cidade": "Castro",
-        "uf": "PR",
-        "total": 71809
-    },
+
     {
         "cidade": "Esmeraldas",
         "uf": "MG",
@@ -2470,11 +2353,7 @@
         "uf": "MT",
         "total": 67620
     },
-    {
-        "cidade": "Rolândia",
-        "uf": "PR",
-        "total": 67383
-    },
+
     {
         "cidade": "Itapema",
         "uf": "SC",
@@ -2715,11 +2594,7 @@
         "uf": "MT",
         "total": 61135
     },
-    {
-        "cidade": "Irati",
-        "uf": "PR",
-        "total": 61088
-    },
+
     {
         "cidade": "Nova Odessa",
         "uf": "SP",
@@ -7235,11 +7110,7 @@
         "uf": "PE",
         "total": 24773
     },
-    {
-        "cidade": "Sarandi",
-        "uf": "RS",
-        "total": 24763
-    },
+
     {
         "cidade": "Igaraçu do Tietê",
         "uf": "SP",

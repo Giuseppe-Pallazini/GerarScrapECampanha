@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import puppeteerExtra from "puppeteer-extra";
 import stealthPlugin from "puppeteer-extra-plugin-stealth";
 import sendCampaignData  from "../generateCampaign/generateCampaign.js";
+import sendCampaignData2 from "../generateCampaign/generateCampaign2.js";
 
 
 
@@ -173,8 +174,11 @@ export async function runSearch(query) {
 
         if (results) {
             // excel(results, query);
-            console.log('Gerando campanha:')
-            await sendCampaignData(results, query)
+
+            console.log('Gerando campanha:');
+            // await sendCampaignData(results, query);
+
+            await sendCampaignData2(results, query)
         }
 
     } catch (error) {
@@ -186,5 +190,5 @@ export async function runSearch(query) {
 
 // Para testes, Chame a função runSearch passando a query desejada e execute o arquivo
 
-// const query = `Monitoramento Floresta do Araguaia - PA`;
+// const query = `'Materiais de construção' Arapiraca - AL`;
 // runSearch(query);
